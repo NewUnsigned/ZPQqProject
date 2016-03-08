@@ -10,7 +10,7 @@
 #import "UIViewController+MMDrawerController.h"
 #import "QQContactsController.h"
 #import "QQTrendstTableController.h"
-#import "QQMessageTableController.h"
+#import "QQRecentController.h"
 #import "QQMainNavigationController.h"
 
 @interface QQMainTabbarController () <UITabBarControllerDelegate>
@@ -52,10 +52,10 @@
 
 - (void)addChildViewcontrollers
 {
-    [self addChildvcWithSbName:@"QQMessageTableController"
-                         title:@"消息"
-                   normalImage:@"tab_recent_nor"
-                 selectedImage:@"tab_recent_press"];
+    [self addChildVCWithClass:[QQRecentController class]
+                        title:@"消息"
+                 norImageName:@"tab_recent_nor"
+            selectedImageName:@"tab_recent_press"];
     [self addChildvcWithSbName:@"QQContactsController"
                          title:@"联系人"
                    normalImage:@"tab_buddy_nor"

@@ -43,12 +43,13 @@
 
 + (void)initialize{
     UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedIn:self, nil];
-    //    [navBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString:@"0x163197"]] forBarMetrics:UIBarMetricsDefault];
+        [navBar setBackgroundImage:[UIImage imageWithColor:MAIN_THEME_COLOR] forBarMetrics:UIBarMetricsDefault];
     navBar.alpha = 1;
     navBar.translucent = NO;
     NSMutableDictionary *md = [NSMutableDictionary dictionary];
     md[NSForegroundColorAttributeName] = MAIN_THEME_COLOR;
     md[NSFontAttributeName] = [UIFont systemFontOfSize:18];
+    md[NSForegroundColorAttributeName] = [UIColor whiteColor];
     [navBar setTitleTextAttributes:md];
 }
 

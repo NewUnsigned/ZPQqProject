@@ -2,13 +2,14 @@
 //  QQMessageTableController.m
 //  ZPQqProject
 //
-//  Created by 融通汇信 on 16/3/7.
+//  Created by 融通汇信 on 16/3/8.
 //  Copyright © 2016年 融通汇信. All rights reserved.
 //
 
 #import "QQMessageTableController.h"
+#import "QQMessageCell.h"
 
-@interface QQMessageTableController ()
+@interface QQMessageTableController () 
 
 @end
 
@@ -16,17 +17,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.height -= 113;
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
     
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 20;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    QQMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"message_cell"];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {

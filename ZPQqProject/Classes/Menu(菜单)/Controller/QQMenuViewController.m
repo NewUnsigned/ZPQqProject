@@ -18,7 +18,7 @@
 #import "QQNormalLevelView.h"
 
 static CGFloat const topview_height_rate = 0.3f;
-static CGFloat const menu_width_rate = 0.85f;
+static CGFloat const menu_width_rate     = 0.85f;
 static CGFloat const bottom_height       = 44.0f;
 
 @interface QQMenuViewController () <UITableViewDelegate,UITableViewDataSource>
@@ -92,13 +92,23 @@ static CGFloat const bottom_height       = 44.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RXBasicTableViewCell *cell = [RXBasicTableViewCell cellWithTableView:tableView];
+//    RXBasicTableViewCell *cell = [RXBasicTableViewCell cellWithTableView:tableView];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menu_cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"menu_cell"];
+    }
     NSArray *group = self.datasArr[indexPath.section];
     RXBasicItem *item = group[indexPath.row];
-    cell.item = item;
+    cell.imageView.image = item.image;
+    cell.textLabel.text = item.title;
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.changeSelectBg = YES;
+    if (cell.selectedBackgroundView != nil) {
+        UIView *selectedView = [[UIView alloc]initWithFrame:cell.contentView.frame];
+        selectedView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
+        cell.selectedBackgroundView = selectedView;
+        cell.textLabel.highlightedTextColor = [UIColor whiteColor];
+    }
     return cell;
 }
 
@@ -153,6 +163,7 @@ static CGFloat const bottom_height       = 44.0f;
     UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(portrait.frame) + 10, portrait.top , _menuWidth, nameLblH)];
     nameLabel.text = @"zhaopeng";
     nameLabel.textColor = [UIColor blackColor];
+    nameLabel.font = LIST_TITLE_FONT;
     [self.view addSubview:nameLabel];
     
     CGRect frame = CGRectMake(nameLabel.left, CGRectGetMaxY(nameLabel.frame) + 5,nameLabel.width, nameLabel.height);
