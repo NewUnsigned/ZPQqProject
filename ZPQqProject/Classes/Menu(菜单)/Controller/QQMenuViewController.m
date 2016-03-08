@@ -17,11 +17,14 @@
 #import "QQMyFilesController.h"
 
 static CGFloat const topview_height_rate = 0.3f;
-static CGFloat const bottom_height       = 50.0f;
+static CGFloat const menu_width_rate = 0.85f;
+
+static CGFloat const bottom_height       = 44.0f;
 
 @interface QQMenuViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray *datasArr;
 @property (nonatomic, strong) NSIndexPath *indexPath;
+@property (assign, nonatomic) CGFloat menuWidth;
 @end
 
 @implementation QQMenuViewController
@@ -36,31 +39,42 @@ static CGFloat const bottom_height       = 50.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = MAIN_THEME_COLOR;
     
+    _menuWidth = QQ_SCREENWIDTH * menu_width_rate;
+    
+    self.view.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(185/255.0) blue:(250/255.0) alpha:1];
+
+
+    UIImage *image = [UIImage imageNamed:@"sidebar_bg.jpg"];
+    CGRect frame = CGRectMake(0, 0, _menuWidth, (QQ_SCREENHEIGHT - bottom_height) * 0.3 * 3.3 / 2);
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:frame];
+    [self.view addSubview:imgView];
+    imgView.contentMode = UIViewContentModeScaleToFill;
+    // 设置按钮的背景图片
+    [imgView setImage:image];
     [self addCellItems];
     [self configTopView];
     [self configMiddleView];
     [self configBottomView];
     
-    GradientView *blurView = [[GradientView alloc]initWithFrame:CGRectMake(0, (QQ_SCREENHEIGHT - bottom_height) * topview_height_rate, QQ_SCREENWIDTH * 0.8, 44) type:TRANSPARENT_ANOTHER_GRADIENT_TYPE];
-    [self.view addSubview:blurView];
     // Do any additional setup after loading the view.
 }
 
 - (void)addCellItems{
     //    __weak typeof(self)weakSelf = self;
-    UIImage *activityImg = [UIImage imageNamed:@"menu_exercise"];
-    UIImage *messageImg  = [UIImage imageNamed:@"menu_message" ];
-    UIImage *settingImg  = [UIImage imageNamed:@"menu_set"     ];
-    UIImage *aboutImg    = [UIImage imageNamed:@"menu_about"   ];
+    UIImage *memberImg  = [UIImage imageNamed:@"sidebar_purse"];
+    UIImage *walletImg  = [UIImage imageNamed:@"sidebar_purse" ];
+    UIImage *playactImg = [UIImage imageNamed:@"sidebar_decoration"];
+    UIImage *collectImg = [UIImage imageNamed:@"sidebar_favorit"   ];
+    UIImage *albumImg   = [UIImage imageNamed:@"sidebar_album"     ];
+    UIImage *filesImg   = [UIImage imageNamed:@"sidebar_file"      ];
     
-    RXBasicArrowItem *member   = [RXBasicArrowItem  itemWithImage:activityImg title:@"开通会员"];
-    RXBasicArrowItem *wallet   = [RXBasicArrowItem  itemWithImage:messageImg  title:@"QQ钱包" ];
-    RXBasicArrowItem *playact  = [RXBasicArrowItem  itemWithImage:settingImg  title:@"个性装扮"];
-    RXBasicArrowItem *collect  = [RXBasicArrowItem  itemWithImage:aboutImg    title:@"我的收藏"];
-    RXBasicArrowItem *album    = [RXBasicArrowItem  itemWithImage:aboutImg    title:@"我的相册"];
-    RXBasicArrowItem *files    = [RXBasicArrowItem  itemWithImage:aboutImg    title:@"我的文件"];
+    RXBasicArrowItem *member   = [RXBasicArrowItem  itemWithImage:memberImg   title:@"开通会员"];
+    RXBasicArrowItem *wallet   = [RXBasicArrowItem  itemWithImage:walletImg   title:@"QQ钱包" ];
+    RXBasicArrowItem *playact  = [RXBasicArrowItem  itemWithImage:playactImg  title:@"个性装扮"];
+    RXBasicArrowItem *collect  = [RXBasicArrowItem  itemWithImage:collectImg  title:@"我的收藏"];
+    RXBasicArrowItem *album    = [RXBasicArrowItem  itemWithImage:albumImg    title:@"我的相册"];
+    RXBasicArrowItem *files    = [RXBasicArrowItem  itemWithImage:filesImg    title:@"我的文件"];
     
     self.datasArr = [NSMutableArray arrayWithObjects:@[member,wallet,playact,collect,album,files],nil];
 }
@@ -81,8 +95,8 @@ static CGFloat const bottom_height       = 50.0f;
     NSArray *group = self.datasArr[indexPath.section];
     RXBasicItem *item = group[indexPath.row];
     cell.item = item;
-    cell.backgroundColor = indexPath.row % 2 == 0 ? [UIColor colorWithRed:0/255.0 green:50/255.0 blue:130/255.0 alpha:1] : LISTVIEW_BACKGROUNDCOLOR;
-    cell.backgroundColor = MAIN_THEME_COLOR;
+    cell.backgroundColor = [UIColor clearColor];
+//    cell.backgroundColor = MAIN_THEME_COLOR;
 
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.changeSelectBg = YES;
@@ -97,23 +111,22 @@ static CGFloat const bottom_height       = 50.0f;
     if (item.option != nil && ![item isKindOfClass:[RXBasicSwitchItem class]]) {
         item.option();
     }
-    __weak typeof(self)weakSelf = self;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     [cell.imageView clearBadge];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.mm_drawerController setMaximumLeftDrawerWidth:QQ_SCREENWIDTH animated:YES completion:^(BOOL finished) {
-        QQMyFilesController *vc = [[QQMyFilesController alloc]init];
-        UINavigationController *nav = (UINavigationController *)weakSelf.mm_drawerController.centerViewController;
-        vc.title = item.title;
-        [nav pushViewController:vc animated:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)( 0.25 * NSEC_PER_SEC)),dispatch_get_main_queue(), ^{
-            [weakSelf.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
-                if (finished) {
-                    [weakSelf.mm_drawerController setMaximumLeftDrawerWidth:QQ_SCREENWIDTH * 0.8];
-                }
-            }];
-        });
-    }];
+    [self closeDrawerWithTitle:item.title];
+}
+- (void)closeDrawerWithTitle:(NSString *)title{
+    QQMyFilesController *vc = [[QQMyFilesController alloc]init];
+    UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
+    vc.title = title;
+    [nav pushViewController:vc animated:NO];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)( 0.25 * NSEC_PER_SEC)),dispatch_get_main_queue(), ^{
+        [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
+            if (finished) {
+            }
+        }];
+    });
 }
 
 - (NSMutableArray *)datasArr
@@ -133,64 +146,87 @@ static CGFloat const bottom_height       = 50.0f;
     CGFloat portraitX = 20;
     
     UIImageView *portrait = [[UIImageView alloc]initWithFrame:CGRectMake(portraitX, portraitY, portraitH, portraitH)];
-    portrait.image = [UIImage imageNamed:@"menu_myaccount_icon"];
+    portrait.image = [UIImage imageNamed:@"IMG_0097"];
     [self.view addSubview:portrait];
+    portrait.clipsToBounds = YES;
+    portrait.layer.borderWidth = 2;
+    portrait.layer.borderColor = [UIColor whiteColor].CGColor;
+    portrait.layer.cornerRadius = portraitH * 0.5;
     
-    UIButton *qrCode = [[UIButton alloc]initWithFrame:CGRectMake(QQ_SCREENWIDTH * 0.8 - 20 - 40, portraitY, 40, 40)];
-    [qrCode setImage:[UIImage imageNamed:@"menu_myaccount_icon"] forState:UIControlStateNormal];
+    UIButton *qrCode = [[UIButton alloc]initWithFrame:CGRectMake(_menuWidth - 20 - 40, portraitY, 40, 40)];
+    [qrCode setImage:[UIImage imageNamed:@"sidebar_QRcode_normal"] forState:UIControlStateNormal];
+    [qrCode addTarget:self action:@selector(qrCodeButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [qrCode setImage:[UIImage imageNamed:@"sidebar_QRcode_press"] forState:UIControlStateHighlighted];
     [self.view addSubview:qrCode];
 
-    UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(portrait.frame) + 10, portrait.top , QQ_SCREENWIDTH * 0.8, nameLblH)];
+    UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(portrait.frame) + 10, portrait.top , _menuWidth, nameLblH)];
     nameLabel.text = @"zhaopeng";
-    nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.textColor = [UIColor blackColor];
     [self.view addSubview:nameLabel];
     
-    UILabel *invitationCode = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(portrait.frame) , nameLabel.width - 40,
-                                                                       (QQ_SCREENHEIGHT - bottom_height) * topview_height_rate - CGRectGetMaxY(portrait.frame) + 10)];
-    invitationCode.text = @"jfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfjjfjosfj";
-    invitationCode.textColor = [UIColor whiteColor];
-    invitationCode.font = [UIFont systemFontOfSize:12];
-    invitationCode.numberOfLines = 0;
-    [self.view addSubview:invitationCode];
+    UIButton *signature = [[UIButton alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(portrait.frame) , nameLabel.width - 40,44)];
+    NSString *text = @"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
+    [signature setImage:[UIImage imageNamed:@"sidebar_signature_nor"] forState:UIControlStateNormal];
+    [signature setTitle:text forState:UIControlStateNormal];
+    [signature setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    signature.titleLabel.font = [UIFont systemFontOfSize:13];
+    [signature setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    signature.adjustsImageWhenHighlighted = NO;
+    [signature setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+    [signature addTarget:self action:@selector(signatureButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:signature];
+}
+
+- (void)qrCodeButtonDidClicked:(UIButton *)btn{
+    [self closeDrawerWithTitle:@"二维码"];
+}
+
+- (void)signatureButtonDidClicked:(UIButton *)btn{
+    [self closeDrawerWithTitle:@"修改签名"];
 }
 
 - (void)configMiddleView{
     CGFloat tableX = 0;
-    CGFloat tableY = (QQ_SCREENHEIGHT - bottom_height) * topview_height_rate;
-    CGFloat tableW = QQ_SCREENWIDTH * 0.8;
-    CGFloat tableH = (QQ_SCREENHEIGHT - bottom_height) * (1 - topview_height_rate);
+    CGFloat tableY = (QQ_SCREENHEIGHT - bottom_height) * topview_height_rate + 40;
+    CGFloat tableW = _menuWidth;
+    CGFloat tableH = (QQ_SCREENHEIGHT - bottom_height) * (1 - topview_height_rate) - 40;
     CGRect tableFrame = CGRectMake(tableX, tableY, tableW, tableH);
-    UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.backgroundColor = MAIN_THEME_COLOR;
+    tableView.backgroundColor = [UIColor clearColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"menu_cell"];
     [self.view addSubview:tableView];
 }
 
 - (void)configBottomView{
-    CGFloat labelW = (QQ_SCREENWIDTH * 0.8 - 60) * 0.5;
+    CGFloat labelW = (_menuWidth - 60) * 0.3;
     UIButton *loginOutBtn = [[UIButton alloc]initWithFrame:CGRectMake(20,
                                                                      QQ_SCREENHEIGHT - bottom_height,
                                                                      labelW,
                                                                       bottom_height)];
     [loginOutBtn setTitle:@"设置" forState:UIControlStateNormal];
-//    [loginOutBtn setImage:[UIImage imageNamed:@"menu_quit"] forState:UIControlStateNormal];
+    [loginOutBtn setImage:[UIImage imageNamed:@"sidebar_setting"] forState:UIControlStateNormal];
+    [loginOutBtn setImage:[UIImage imageNamed:@"sidebar_setting_press"] forState:UIControlStateHighlighted];
+    
     [self.view addSubview:loginOutBtn];
-    [loginOutBtn setTitleEdgeInsets:UIEdgeInsetsMake(10, 10, 0, 0)];
+    [loginOutBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
     loginOutBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [loginOutBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [loginOutBtn addTarget:self action:@selector(loginOutButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [loginOutBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    UIButton *nightBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(loginOutBtn.frame),
+    
+    UIButton *nightBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(loginOutBtn.frame) + 30,
                                                                       QQ_SCREENHEIGHT - bottom_height,
                                                                       labelW,
                                                                       bottom_height)];
     [nightBtn setTitle:@"夜间" forState:UIControlStateNormal];
-//    [nightBtn setImage:[UIImage imageNamed:@"menu_quit"] forState:UIControlStateNormal];
+    [nightBtn setImage:[UIImage imageNamed:@"sidebar_nightmode_off"] forState:UIControlStateNormal];
+    [nightBtn setImage:[UIImage imageNamed:@"sidebar_nightmode_off_press"] forState:UIControlStateHighlighted];
+
     [self.view addSubview:nightBtn];
-    [nightBtn setTitleEdgeInsets:UIEdgeInsetsMake(10, 10, 0, 0)];
+    [nightBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
     nightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [nightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [nightBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];

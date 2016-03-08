@@ -13,7 +13,7 @@
 #define ZP_COLOR(r, g, b, a) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:a]
 
 // 主题颜色
-#define MAIN_THEME_COLOR [UIColor colorWithRed:(62/255.0) green:(162/255.0) blue:(250/255.0) alpha:1]
+#define MAIN_THEME_COLOR [UIColor colorWithRed:(47/255.0) green:(158/255.0) blue:(255/255.0) alpha:1]
 // 展示列表背景色
 #define LISTVIEW_BACKGROUNDCOLOR [UIColor colorWithRed:(242/255.0) green:(246/255.0) blue:(248/255.0) alpha:1]
 

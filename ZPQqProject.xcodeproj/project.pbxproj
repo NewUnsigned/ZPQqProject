@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0D69101C8E9D77006A715A /* QQUnhignlightedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D690F1C8E9D77006A715A /* QQUnhignlightedButton.m */; };
 		0D52A0841C8D12F5008E6E0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D52A0821C8D12F5008E6E0F /* Main.storyboard */; };
 		0D52A0861C8D12F5008E6E0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D52A0851C8D12F5008E6E0F /* Assets.xcassets */; };
 		0D52A0891C8D12F5008E6E0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D52A0871C8D12F5008E6E0F /* LaunchScreen.storyboard */; };
@@ -95,6 +96,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D0D690E1C8E9D77006A715A /* QQUnhignlightedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQUnhignlightedButton.h; sourceTree = "<group>"; };
+		0D0D690F1C8E9D77006A715A /* QQUnhignlightedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQUnhignlightedButton.m; sourceTree = "<group>"; };
 		0D52A0761C8D12F5008E6E0F /* ZPQqProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZPQqProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D52A0831C8D12F5008E6E0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D52A0851C8D12F5008E6E0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 		0D52A1101C8D1A6B008E6E0F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0D0D690E1C8E9D77006A715A /* QQUnhignlightedButton.h */,
+				0D0D690F1C8E9D77006A715A /* QQUnhignlightedButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -987,6 +992,7 @@
 				0D52A17D1C8D23CB008E6E0F /* GradientView.m in Sources */,
 				0D52A13A1C8D1A6B008E6E0F /* UIBarButtonItem+YYAdd.m in Sources */,
 				0D52A1441C8D1A6B008E6E0F /* UITableView+YYAdd.m in Sources */,
+				0D0D69101C8E9D77006A715A /* QQUnhignlightedButton.m in Sources */,
 				0D52A1331C8D1A6B008E6E0F /* NSObject+YYAdd.m in Sources */,
 				0D52A1351C8D1A6B008E6E0F /* NSString+YYAdd.m in Sources */,
 				0D52A1371C8D1A6B008E6E0F /* CALayer+YYAdd.m in Sources */,
@@ -1145,6 +1151,7 @@
 			baseConfigurationReference = D16A2987A7BCC2C6C38C3766 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = ZPQqProject/ZPQqProject_Prefix.pch;
 				INFOPLIST_FILE = ZPQqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -1159,6 +1166,7 @@
 			baseConfigurationReference = CE5E5CB37A815BD48D9A6264 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = ZPQqProject/ZPQqProject_Prefix.pch;
 				INFOPLIST_FILE = ZPQqProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;

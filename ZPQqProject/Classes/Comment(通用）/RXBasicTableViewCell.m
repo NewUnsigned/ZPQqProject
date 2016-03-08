@@ -113,7 +113,7 @@ static const NSInteger DetailTextLabelFontSize = 14;
     if (_changeSelectBg && self.selectedBackgroundView != nil) {
         //设置选中状态下的Cell UI
         UIView *selectedView = [[UIView alloc]initWithFrame:self.contentView.frame];
-        selectedView.backgroundColor = [UIColor colorWithRed:0/255.0 green:70/255.0 blue:140/255.0 alpha:1];
+        selectedView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
         self.selectedBackgroundView = selectedView;
         self.textLabel.highlightedTextColor = [UIColor whiteColor];
     }

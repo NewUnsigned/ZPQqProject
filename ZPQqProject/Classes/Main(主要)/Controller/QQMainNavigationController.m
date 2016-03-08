@@ -47,7 +47,7 @@
     navBar.alpha = 1;
     navBar.translucent = NO;
     NSMutableDictionary *md = [NSMutableDictionary dictionary];
-    md[NSForegroundColorAttributeName] = [UIColor colorWithRed:(0/255.0) green:(70/255.0) blue:(131/255.0) alpha:1];
+    md[NSForegroundColorAttributeName] = MAIN_THEME_COLOR;
     md[NSFontAttributeName] = [UIFont systemFontOfSize:18];
     [navBar setTitleTextAttributes:md];
 }

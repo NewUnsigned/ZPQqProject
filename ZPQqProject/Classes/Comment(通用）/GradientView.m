@@ -67,8 +67,8 @@
 
 //Transparent Gradient Layer
 - (void) insertAnotherTransparentGradient {
-    UIColor *colorTwo = [MAIN_THEME_COLOR colorWithAlphaComponent:0.0];
-    UIColor *colorOne = MAIN_THEME_COLOR;
+    UIColor *colorTwo = [[UIColor colorWithRed:(0/255.0) green:(185/255.0) blue:(250/255.0) alpha:1] colorWithAlphaComponent:0.0];
+    UIColor *colorOne = [UIColor colorWithRed:(0/255.0) green:(185/255.0) blue:(250/255.0) alpha:1];
     NSArray *colors = [NSArray arrayWithObjects:(id)colorOne.CGColor, colorTwo.CGColor, nil];
     NSNumber *stopOne = [NSNumber numberWithFloat:0.0];
     NSNumber *stopTwo = [NSNumber numberWithFloat:1.0];

@@ -54,16 +54,16 @@
 {
     [self addChildvcWithSbName:@"QQMessageTableController"
                          title:@"消息"
-                   normalImage:@"tabbar_home_normal"
-                 selectedImage:@"tabbar_home_highlighted"];
+                   normalImage:@"tab_recent_nor"
+                 selectedImage:@"tab_recent_press"];
     [self addChildvcWithSbName:@"QQContactsController"
                          title:@"联系人"
-                   normalImage:@"tabbar_myaccount_normal"
-                 selectedImage:@"tabbar_myaccount_highlighted"];
+                   normalImage:@"tab_buddy_nor"
+                 selectedImage:@"tab_buddy_press"];
     [self addChildvcWithSbName:@"QQTrendstTableController"
                          title:@"动态"
-                   normalImage:@"tabbar_invite_normal"
-                 selectedImage:@"tabbar_invite_highlighted"];
+                   normalImage:@"tab_qworld_nor"
+                 selectedImage:@"tab_qworld_press"];
 }
 
 - (UIViewController *)addChildVCWithClass:(Class)class title:(NSString *)title norImageName:(NSString *)norImageName selectedImageName:(NSString *)selectedImageName
@@ -88,7 +88,7 @@
     vc.tabBarItem.selectedImage =  [UIImage imageNamed:selectedImageName];
     [vc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"0x606060"]} forState:UIControlStateNormal];
-    [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"0x163197"]} forState:UIControlStateSelected];
+    [vc.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:MAIN_THEME_COLOR} forState:UIControlStateSelected];
     [self addChildViewController:vc.navigationController];
     return vc;
 }

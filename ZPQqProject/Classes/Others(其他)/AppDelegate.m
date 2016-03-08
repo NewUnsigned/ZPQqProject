@@ -40,10 +40,10 @@
                              initWithCenterViewController:navigationController
                              leftDrawerViewController:leftSideDrawerViewController];
     [self.drawerController setRestorationIdentifier:@"MMDrawer"];
-    [self.drawerController setMaximumLeftDrawerWidth:QQ_SCREENWIDTH * 0.8];
+    [self.drawerController setMaximumLeftDrawerWidth:QQ_SCREENWIDTH * 0.82];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeBezelPanningCenterView];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModePanningCenterView | MMCloseDrawerGestureModeTapCenterView];
-    
+    [self.drawerController setBezelPanningCenterViewRange:40];
     [self.drawerController
      setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
          MMDrawerControllerDrawerVisualStateBlock block;
