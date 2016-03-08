@@ -31,11 +31,11 @@ UIKIT_EXTERN NSString *const ZPStatusBarStyleDark;
 
 + (void)zp_showSuccessWithStatus:(NSString *)string;
 
-+ (void)zp_showMaskTypeNoneWithStatus:(NSString *)status;
-
-+ (void)zp_showMaskTypeClearWithStatus:(NSString *)status;
-
-+ (void)zp_showWithStatus:(NSString *)status;
+//+ (void)zp_showMaskTypeNoneWithStatus:(NSString *)status;
+//
+//+ (void)zp_showMaskTypeClearWithStatus:(NSString *)status;
+//
+//+ (void)zp_showWithStatus:(NSString *)status;
 
 + (void)zp_showErrorWithStatus:(NSString *)string;
 

@@ -15,16 +15,16 @@
 #import "GradientView.h"
 #import "UIViewController+MMDrawerController.h"
 #import "QQMyFilesController.h"
+#import "QQNormalLevelView.h"
 
 static CGFloat const topview_height_rate = 0.3f;
 static CGFloat const menu_width_rate = 0.85f;
-
 static CGFloat const bottom_height       = 44.0f;
 
 @interface QQMenuViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray *datasArr;
-@property (nonatomic, strong) NSIndexPath *indexPath;
-@property (assign, nonatomic) CGFloat menuWidth;
+@property (nonatomic, strong) NSIndexPath    *indexPath;
+@property (assign, nonatomic) CGFloat         menuWidth;
 @end
 
 @implementation QQMenuViewController
@@ -40,18 +40,7 @@ static CGFloat const bottom_height       = 44.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _menuWidth = QQ_SCREENWIDTH * menu_width_rate;
-    
-    self.view.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(185/255.0) blue:(250/255.0) alpha:1];
-
-
-    UIImage *image = [UIImage imageNamed:@"sidebar_bg.jpg"];
-    CGRect frame = CGRectMake(0, 0, _menuWidth, (QQ_SCREENHEIGHT - bottom_height) * 0.3 * 3.3 / 2);
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:frame];
-    [self.view addSubview:imgView];
-    imgView.contentMode = UIViewContentModeScaleToFill;
-    // 设置按钮的背景图片
-    [imgView setImage:image];
+    [self configMenuView];
     [self addCellItems];
     [self configTopView];
     [self configMiddleView];
@@ -60,10 +49,22 @@ static CGFloat const bottom_height       = 44.0f;
     // Do any additional setup after loading the view.
 }
 
+- (void)configMenuView{
+    _menuWidth = QQ_SCREENWIDTH * menu_width_rate;
+    self.view.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(185/255.0) blue:(250/255.0) alpha:1];
+    
+    UIImage *image = [UIImage imageNamed:@"sidebar_bg.jpg"];
+    CGRect frame = CGRectMake(0, 0, _menuWidth, (QQ_SCREENHEIGHT - bottom_height) * 0.3 * 3.3 / 2);
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:frame];
+    [self.view addSubview:imgView];
+    imgView.contentMode = UIViewContentModeScaleToFill;
+    [imgView setImage:image];
+}
+
 - (void)addCellItems{
     //    __weak typeof(self)weakSelf = self;
-    UIImage *memberImg  = [UIImage imageNamed:@"sidebar_purse"];
-    UIImage *walletImg  = [UIImage imageNamed:@"sidebar_purse" ];
+    UIImage *memberImg  = [UIImage imageNamed:@"sidebar_purse"     ];
+    UIImage *walletImg  = [UIImage imageNamed:@"sidebar_purse"     ];
     UIImage *playactImg = [UIImage imageNamed:@"sidebar_decoration"];
     UIImage *collectImg = [UIImage imageNamed:@"sidebar_favorit"   ];
     UIImage *albumImg   = [UIImage imageNamed:@"sidebar_album"     ];
@@ -96,8 +97,6 @@ static CGFloat const bottom_height       = 44.0f;
     RXBasicItem *item = group[indexPath.row];
     cell.item = item;
     cell.backgroundColor = [UIColor clearColor];
-//    cell.backgroundColor = MAIN_THEME_COLOR;
-
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.changeSelectBg = YES;
     return cell;
@@ -129,14 +128,6 @@ static CGFloat const bottom_height       = 44.0f;
     });
 }
 
-- (NSMutableArray *)datasArr
-{
-    if (!_datasArr) {
-        _datasArr = [NSMutableArray array];
-    }
-    return _datasArr;
-}
-
 #pragma mark - config subviews method
 
 - (void)configTopView{
@@ -164,6 +155,10 @@ static CGFloat const bottom_height       = 44.0f;
     nameLabel.textColor = [UIColor blackColor];
     [self.view addSubview:nameLabel];
     
+    CGRect frame = CGRectMake(nameLabel.left, CGRectGetMaxY(nameLabel.frame) + 5,nameLabel.width, nameLabel.height);
+    QQNormalLevelView *levelView = [QQNormalLevelView levelViewWithFrame:frame sun:3 moon:3 star:3];
+    [self.view addSubview:levelView];
+    
     UIButton *signature = [[UIButton alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(portrait.frame) , nameLabel.width - 40,44)];
     NSString *text = @"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
     [signature setImage:[UIImage imageNamed:@"sidebar_signature_nor"] forState:UIControlStateNormal];
@@ -175,14 +170,6 @@ static CGFloat const bottom_height       = 44.0f;
     [signature setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
     [signature addTarget:self action:@selector(signatureButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:signature];
-}
-
-- (void)qrCodeButtonDidClicked:(UIButton *)btn{
-    [self closeDrawerWithTitle:@"二维码"];
-}
-
-- (void)signatureButtonDidClicked:(UIButton *)btn{
-    [self closeDrawerWithTitle:@"修改签名"];
 }
 
 - (void)configMiddleView{
@@ -233,12 +220,22 @@ static CGFloat const bottom_height       = 44.0f;
     [nightBtn addTarget:self action:@selector(nightButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+#pragma mark - button clicked method
+
 - (void)nightButtonDidClicked:(UIButton *)btn{
     
 }
 
+- (void)qrCodeButtonDidClicked:(UIButton *)btn{
+    [self closeDrawerWithTitle:@"二维码"];
+}
+
+- (void)signatureButtonDidClicked:(UIButton *)btn{
+    [self closeDrawerWithTitle:@"修改签名"];
+}
+
 - (void)loginOutButtonDidClicked:(UIButton *)btn{
-    __weak typeof(self)weakSelf = self;
+//    __weak typeof(self)weakSelf = self;
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];
@@ -249,6 +246,16 @@ static CGFloat const bottom_height       = 44.0f;
     [alert addAction:cancel];
     [alert addAction:ensure];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+#pragma mark - lazy
+
+- (NSMutableArray *)datasArr
+{
+    if (!_datasArr) {
+        _datasArr = [NSMutableArray array];
+    }
+    return _datasArr;
 }
 
 - (void)didReceiveMemoryWarning {
