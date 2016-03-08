@@ -36,11 +36,16 @@
     UIButton *leftBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     [leftBtn setImage:[UIImage imageNamed:@"IMG_0097"] forState:UIControlStateNormal];
     leftBtn.layer.cornerRadius = 20;
+    [leftBtn addTarget:self action:@selector(leftButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     leftBtn.clipsToBounds = YES;
     _leftBtn = leftBtn;
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     [delegate addObserver:self forKeyPath:@"percentVisible" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+}
+
+- (void)leftButtonDidClicked:(UIButton *)btn{
+    [self.mm_drawerController openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
