@@ -37,6 +37,7 @@
     UIButton *leftBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     [leftBtn setImage:[UIImage imageNamed:@"IMG_0097"] forState:UIControlStateNormal];
     leftBtn.layer.cornerRadius = 20;
+    leftBtn.adjustsImageWhenHighlighted = NO;
     [leftBtn addTarget:self action:@selector(leftButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     leftBtn.clipsToBounds = YES;
     _leftBtn = leftBtn;

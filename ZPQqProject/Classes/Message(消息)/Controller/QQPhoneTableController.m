@@ -47,17 +47,25 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return section ? 21 : 1;
+    return section ? 21 : 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.1;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 1) {
-        UILabel *secLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 21)];
+        UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 21)];
+        bgView.clipsToBounds = NO;
+        
+        UILabel *secLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, -2, self.view.width, 23)];
         secLbl.font = [UIFont systemFontOfSize:10];
         secLbl.text = @"    通话记录";
+        secLbl.backgroundColor = ZP_COLOR(225, 225, 225,1);
         secLbl.textColor = [UIColor lightGrayColor];
-        secLbl.backgroundColor = ZP_COLOR(232, 236, 238, 0.8);
-        return secLbl;
+        [bgView addSubview:secLbl];
+        return bgView;
     }else{
         return nil;
     }

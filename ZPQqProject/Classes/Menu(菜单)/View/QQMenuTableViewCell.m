@@ -22,13 +22,11 @@
     if (cell == nil) {
         cell = [[QQMenuTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
         cell.backgroundColor = [UIColor clearColor];
+        UIView *selectedView = [[UIView alloc]initWithFrame:cell.contentView.frame];
+        selectedView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
+        cell.selectedBackgroundView = selectedView;
+        cell.textLabel.highlightedTextColor = [UIColor whiteColor];
         cell.textLabel.textColor = [UIColor whiteColor];
-        if (cell.selectedBackgroundView == nil) {
-            UIView *selectedView = [[UIView alloc]initWithFrame:cell.contentView.frame];
-            selectedView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
-            cell.selectedBackgroundView = selectedView;
-            cell.textLabel.highlightedTextColor = [UIColor whiteColor];
-        }
     }
     return cell;
 }

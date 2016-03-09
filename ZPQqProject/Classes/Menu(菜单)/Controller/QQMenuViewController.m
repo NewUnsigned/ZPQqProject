@@ -6,16 +6,16 @@
 //  Copyright © 2016年 融通汇信. All rights reserved.
 //
 
+#import "UIViewController+MMDrawerController.h"
 #import "QQMenuViewController.h"
-#import "QQBasicItem.h"
+#import "QQBasicTableViewCell.h"
+#import "QQMenuTableViewCell.h"
+#import "QQMyFilesController.h"
+#import "QQBasicSwitchItem.h"
+#import "QQNormalLevelView.h"
 #import "QQBasicArrowItem.h"
 #import "QQBasicLabelItem.h"
-#import "QQBasicSwitchItem.h"
-#import "QQBasicTableViewCell.h"
-#import "UIViewController+MMDrawerController.h"
-#import "QQMyFilesController.h"
-#import "QQNormalLevelView.h"
-#import "QQMenuTableViewCell.h"
+#import "QQBasicItem.h"
 
 static CGFloat const topview_height_rate = 0.3f;
 static CGFloat const menu_width_rate     = 1.0f;
@@ -39,16 +39,15 @@ static CGFloat const bottom_height       = 44.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self configMenuView];
-    [self addCellItems];
-    [self configTopView];
-    [self configMiddleView];
-    [self configBottomView];
+    [self establishMenuView];
+    [self establishTopView];
+    [self establishMiddleView];
+    [self establishBottomView];
     
     // Do any additional setup after loading the view.
 }
 
-- (void)configMenuView{
+- (void)establishMenuView{
     _menuWidth = QQ_SCREENWIDTH * menu_width_rate;
     self.view.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(185/255.0) blue:(250/255.0) alpha:1];
     
@@ -58,25 +57,6 @@ static CGFloat const bottom_height       = 44.0f;
     [self.view addSubview:imgView];
     imgView.contentMode = UIViewContentModeScaleToFill;
     [imgView setImage:image];
-}
-
-- (void)addCellItems{
-    //    __weak typeof(self)weakSelf = self;
-    UIImage *memberImg  = [UIImage imageNamed:@"sidebar_purse"     ];
-    UIImage *walletImg  = [UIImage imageNamed:@"sidebar_purse"     ];
-    UIImage *playactImg = [UIImage imageNamed:@"sidebar_decoration"];
-    UIImage *collectImg = [UIImage imageNamed:@"sidebar_favorit"   ];
-    UIImage *albumImg   = [UIImage imageNamed:@"sidebar_album"     ];
-    UIImage *filesImg   = [UIImage imageNamed:@"sidebar_file"      ];
-    
-    QQBasicArrowItem *member   = [QQBasicArrowItem  itemWithImage:memberImg   title:@"开通会员"];
-    QQBasicArrowItem *wallet   = [QQBasicArrowItem  itemWithImage:walletImg   title:@"QQ钱包" ];
-    QQBasicArrowItem *playact  = [QQBasicArrowItem  itemWithImage:playactImg  title:@"个性装扮"];
-    QQBasicArrowItem *collect  = [QQBasicArrowItem  itemWithImage:collectImg  title:@"我的收藏"];
-    QQBasicArrowItem *album    = [QQBasicArrowItem  itemWithImage:albumImg    title:@"我的相册"];
-    QQBasicArrowItem *files    = [QQBasicArrowItem  itemWithImage:filesImg    title:@"我的文件"];
-    
-    self.datasArr = [NSMutableArray arrayWithObjects:@[member,wallet,playact,collect,album,files],nil];
 }
 
 #pragma mark - Table view data source
@@ -121,7 +101,7 @@ static CGFloat const bottom_height       = 44.0f;
 
 #pragma mark - config subviews method
 
-- (void)configTopView{
+- (void)establishTopView{
     CGFloat portraitH = 50;
     CGFloat nameLblH = 24;
     CGFloat portraitY = ((QQ_SCREENHEIGHT - bottom_height) * topview_height_rate - portraitH) * 0.5;
@@ -151,7 +131,7 @@ static CGFloat const bottom_height       = 44.0f;
     QQNormalLevelView *levelView = [QQNormalLevelView levelViewWithFrame:frame sun:3 moon:3 star:3];
     [self.view addSubview:levelView];
     
-    UIButton *signature = [[UIButton alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(portrait.frame) , nameLabel.width - 70,44)];
+    UIButton *signature = [[UIButton alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(portrait.frame) , nameLabel.width - 120,44)];
     NSString *text = @"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
     [signature setImage:[UIImage imageNamed:@"sidebar_signature_nor"] forState:UIControlStateNormal];
     [signature setTitle:text forState:UIControlStateNormal];
@@ -164,7 +144,7 @@ static CGFloat const bottom_height       = 44.0f;
     [self.view addSubview:signature];
 }
 
-- (void)configMiddleView{
+- (void)establishMiddleView{
     CGFloat tableX = 0;
     CGFloat tableY = (QQ_SCREENHEIGHT - bottom_height) * topview_height_rate + 40;
     CGFloat tableW = _menuWidth;
@@ -179,36 +159,20 @@ static CGFloat const bottom_height       = 44.0f;
     [self.view addSubview:tableView];
 }
 
-- (void)configBottomView{
+- (void)establishBottomView{
     CGFloat labelW = (_menuWidth - 60) * 0.3;
     UIButton *loginOutBtn = [[UIButton alloc]initWithFrame:CGRectMake(20,
                                                                      QQ_SCREENHEIGHT - bottom_height,
                                                                      labelW,
                                                                       bottom_height)];
-    [loginOutBtn setTitle:@"设置" forState:UIControlStateNormal];
-    [loginOutBtn setImage:[UIImage imageNamed:@"sidebar_setting"] forState:UIControlStateNormal];
-    [loginOutBtn setImage:[UIImage imageNamed:@"sidebar_setting_press"] forState:UIControlStateHighlighted];
-    
-    [self.view addSubview:loginOutBtn];
-    [loginOutBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
-    loginOutBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [loginOutBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [self collocateButton:loginOutBtn WithImageName:@"sidebar_setting" title:@"设置"];
     [loginOutBtn addTarget:self action:@selector(loginOutButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [loginOutBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    
+
     UIButton *nightBtn = [[UIButton alloc]initWithFrame:CGRectMake(CGRectGetMaxX(loginOutBtn.frame) + 30,
                                                                       QQ_SCREENHEIGHT - bottom_height,
                                                                       labelW,
                                                                       bottom_height)];
-    [nightBtn setTitle:@"夜间" forState:UIControlStateNormal];
-    [nightBtn setImage:[UIImage imageNamed:@"sidebar_nightmode_off"] forState:UIControlStateNormal];
-    [nightBtn setImage:[UIImage imageNamed:@"sidebar_nightmode_off_press"] forState:UIControlStateHighlighted];
-
-    [self.view addSubview:nightBtn];
-    [nightBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
-    nightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [nightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [nightBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [self collocateButton:nightBtn WithImageName:@"sidebar_nightmode_off" title:@"夜间"];
     [nightBtn addTarget:self action:@selector(nightButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -227,17 +191,18 @@ static CGFloat const bottom_height       = 44.0f;
 }
 
 - (void)loginOutButtonDidClicked:(UIButton *)btn{
-//    __weak typeof(self)weakSelf = self;
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
-    UIAlertAction *ensure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [self closeDrawerWithTitle:@"设置"];
+}
 
-    }];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"退出用户" message:@"确定退出用户吗?" preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:cancel];
-    [alert addAction:ensure];
-    [self presentViewController:alert animated:YES completion:nil];
+- (void)collocateButton:(UIButton *)btn WithImageName:(NSString *)imgName title:(NSString *)title{
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_press",imgName]] forState:UIControlStateHighlighted];
+    [btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+    btn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [btn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [self.view addSubview:btn];
 }
 
 #pragma mark - lazy
@@ -245,7 +210,20 @@ static CGFloat const bottom_height       = 44.0f;
 - (NSMutableArray *)datasArr
 {
     if (!_datasArr) {
-        _datasArr = [NSMutableArray array];
+        UIImage *memberImg  = [UIImage imageNamed:@"sidebar_purse"     ];
+        UIImage *walletImg  = [UIImage imageNamed:@"sidebar_purse"     ];
+        UIImage *playactImg = [UIImage imageNamed:@"sidebar_decoration"];
+        UIImage *collectImg = [UIImage imageNamed:@"sidebar_favorit"   ];
+        UIImage *albumImg   = [UIImage imageNamed:@"sidebar_album"     ];
+        UIImage *filesImg   = [UIImage imageNamed:@"sidebar_file"      ];
+        
+        QQBasicArrowItem *member   = [QQBasicArrowItem  itemWithImage:memberImg   title:@"开通会员"];
+        QQBasicArrowItem *wallet   = [QQBasicArrowItem  itemWithImage:walletImg   title:@"QQ钱包" ];
+        QQBasicArrowItem *playact  = [QQBasicArrowItem  itemWithImage:playactImg  title:@"个性装扮"];
+        QQBasicArrowItem *collect  = [QQBasicArrowItem  itemWithImage:collectImg  title:@"我的收藏"];
+        QQBasicArrowItem *album    = [QQBasicArrowItem  itemWithImage:albumImg    title:@"我的相册"];
+        QQBasicArrowItem *files    = [QQBasicArrowItem  itemWithImage:filesImg    title:@"我的文件"];
+        _datasArr = [NSMutableArray arrayWithObjects:@[member,wallet,playact,collect,album,files],nil];
     }
     return _datasArr;
 }

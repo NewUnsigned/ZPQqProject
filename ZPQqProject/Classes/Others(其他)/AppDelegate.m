@@ -43,7 +43,7 @@
     [self.drawerController setMaximumLeftDrawerWidth:QQ_SCREENWIDTH * 0.82];
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeBezelPanningCenterView];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModePanningCenterView | MMCloseDrawerGestureModeTapCenterView];
-    [self.drawerController setBezelPanningCenterViewRange:40];
+    [self.drawerController setBezelPanningCenterViewRange:64];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:self.drawerController];
