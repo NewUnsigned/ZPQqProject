@@ -77,7 +77,7 @@
 - (void)addContainerScrollView{
     UIScrollView *container = [[UIScrollView alloc]initWithFrame:self.view.bounds];
     container.delegate = self;
-    container.contentSize = CGSizeMake(self.view.width, 0);
+    container.contentSize = CGSizeMake(self.view.width * 2, 0);
     [self.view addSubview:container];
     container.scrollEnabled = NO;
     _container = container;

@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureCallback:)];
+//    [self.contentView addGestureRecognizer:pan];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -19,5 +21,27 @@
 
     // Configure the view for the selected state
 }
+
+-(void)panGestureCallback:(UIPanGestureRecognizer *)panGesture{
+    
+    switch (panGesture.state) {
+        case UIGestureRecognizerStateBegan:{
+            
+            break;
+        }
+        case UIGestureRecognizerStateEnded:
+        {
+            
+            break;
+        }
+        case UIGestureRecognizerStateCancelled: {
+
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 
 @end
