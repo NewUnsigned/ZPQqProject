@@ -44,16 +44,6 @@
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeBezelPanningCenterView];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModePanningCenterView | MMCloseDrawerGestureModeTapCenterView];
     [self.drawerController setBezelPanningCenterViewRange:40];
-    __weak typeof(self)weakSelf = self;
-    [self.drawerController
-     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-         MMDrawerControllerDrawerVisualStateBlock block;
-         weakSelf.percentVisible = percentVisible;
-         block = [MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0];
-         if(block){
-             block(drawerController, drawerSide, percentVisible);
-         }
-     }];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:self.drawerController];

@@ -16,14 +16,14 @@
 #import "UIViewController+MMDrawerController.h"
 #import "QQMyFilesController.h"
 #import "QQNormalLevelView.h"
+#import "QQMenuTableViewCell.h"
 
 static CGFloat const topview_height_rate = 0.3f;
-static CGFloat const menu_width_rate     = 0.85f;
+static CGFloat const menu_width_rate     = 1.0f;
 static CGFloat const bottom_height       = 44.0f;
 
 @interface QQMenuViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray *datasArr;
-@property (nonatomic, strong) NSIndexPath    *indexPath;
 @property (assign, nonatomic) CGFloat         menuWidth;
 @end
 
@@ -92,36 +92,18 @@ static CGFloat const bottom_height       = 44.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    RXBasicTableViewCell *cell = [RXBasicTableViewCell cellWithTableView:tableView];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"menu_cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"menu_cell"];
-    }
+    QQMenuTableViewCell *cell = [QQMenuTableViewCell cellWithTableView:tableView];
     NSArray *group = self.datasArr[indexPath.section];
     RXBasicItem *item = group[indexPath.row];
-    cell.imageView.image = item.image;
-    cell.textLabel.text = item.title;
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    if (cell.selectedBackgroundView != nil) {
-        UIView *selectedView = [[UIView alloc]initWithFrame:cell.contentView.frame];
-        selectedView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
-        cell.selectedBackgroundView = selectedView;
-        cell.textLabel.highlightedTextColor = [UIColor whiteColor];
-    }
+    cell.item = item;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.indexPath = indexPath;
     NSArray *group = self.datasArr[indexPath.section];
     RXBasicItem *item = group[indexPath.row];
-    if (item.option != nil && ![item isKindOfClass:[RXBasicSwitchItem class]]) {
-        item.option();
-    }
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell.imageView clearBadge];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self closeDrawerWithTitle:item.title];
 }
@@ -130,12 +112,12 @@ static CGFloat const bottom_height       = 44.0f;
     UINavigationController *nav = (UINavigationController *)self.mm_drawerController.centerViewController;
     vc.title = title;
     [nav pushViewController:vc animated:NO];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)( 0.25 * NSEC_PER_SEC)),dispatch_get_main_queue(), ^{
-        [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
-            if (finished) {
-            }
-        }];
-    });
+    [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
+        if (finished) {
+        }
+    }];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)( 0.25 * NSEC_PER_SEC)),dispatch_get_main_queue(), ^{
+//    });
 }
 
 #pragma mark - config subviews method
@@ -170,7 +152,7 @@ static CGFloat const bottom_height       = 44.0f;
     QQNormalLevelView *levelView = [QQNormalLevelView levelViewWithFrame:frame sun:3 moon:3 star:3];
     [self.view addSubview:levelView];
     
-    UIButton *signature = [[UIButton alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(portrait.frame) , nameLabel.width - 40,44)];
+    UIButton *signature = [[UIButton alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(portrait.frame) , nameLabel.width - 70,44)];
     NSString *text = @"哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈";
     [signature setImage:[UIImage imageNamed:@"sidebar_signature_nor"] forState:UIControlStateNormal];
     [signature setTitle:text forState:UIControlStateNormal];

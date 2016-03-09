@@ -11,6 +11,7 @@
 #import "QQPhoneTableController.h"
 #import "UIViewController+MMDrawerController.h"
 #import "AppDelegate.h"
+#import "MMDrawerVisualState.h"
 
 @interface QQRecentController () <UIScrollViewDelegate>
 
@@ -39,18 +40,22 @@
     [leftBtn addTarget:self action:@selector(leftButtonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     leftBtn.clipsToBounds = YES;
     _leftBtn = leftBtn;
-    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    [delegate addObserver:self forKeyPath:@"percentVisible" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+    
+    __weak typeof(self)weakSelf = self;
+    [self.mm_drawerController
+     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+         MMDrawerControllerDrawerVisualStateBlock block;
+         weakSelf.leftBtn.alpha = 1 - percentVisible;
+         block = [MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0];
+         if(block){
+             block(drawerController, drawerSide, percentVisible);
+         }
+     }];
 }
 
 - (void)leftButtonDidClicked:(UIButton *)btn{
     [self.mm_drawerController openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    _leftBtn.alpha = 1 - [change[@"new"] floatValue];
 }
 
 - (void)addSegmentControlView{
@@ -95,11 +100,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)dealloc{
-    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    [delegate removeObserver:self forKeyPath:@"frame"];
 }
 
 @end

@@ -14,6 +14,7 @@
 		0D0D69201C8EB154006A715A /* QQPhoneTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D691F1C8EB154006A715A /* QQPhoneTableController.m */; };
 		0D0D69231C8EB16E006A715A /* QQMessageTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D69221C8EB16E006A715A /* QQMessageTableController.m */; };
 		0D0D69261C8EBFDE006A715A /* QQMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D69251C8EBFDE006A715A /* QQMessageCell.m */; };
+		0D0D69291C8FB79F006A715A /* QQMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D69281C8FB79F006A715A /* QQMenuTableViewCell.m */; };
 		0D52A0841C8D12F5008E6E0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D52A0821C8D12F5008E6E0F /* Main.storyboard */; };
 		0D52A0861C8D12F5008E6E0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D52A0851C8D12F5008E6E0F /* Assets.xcassets */; };
 		0D52A0891C8D12F5008E6E0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D52A0871C8D12F5008E6E0F /* LaunchScreen.storyboard */; };
@@ -112,6 +113,8 @@
 		0D0D69221C8EB16E006A715A /* QQMessageTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQMessageTableController.m; sourceTree = "<group>"; };
 		0D0D69241C8EBFDE006A715A /* QQMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQMessageCell.h; sourceTree = "<group>"; };
 		0D0D69251C8EBFDE006A715A /* QQMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQMessageCell.m; sourceTree = "<group>"; };
+		0D0D69271C8FB79F006A715A /* QQMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQMenuTableViewCell.h; sourceTree = "<group>"; };
+		0D0D69281C8FB79F006A715A /* QQMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQMenuTableViewCell.m; sourceTree = "<group>"; };
 		0D52A0761C8D12F5008E6E0F /* ZPQqProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZPQqProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D52A0831C8D12F5008E6E0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D52A0851C8D12F5008E6E0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -568,6 +571,8 @@
 			children = (
 				0D0D69111C8EA82C006A715A /* QQNormalLevelView.h */,
 				0D0D69121C8EA82C006A715A /* QQNormalLevelView.m */,
+				0D0D69271C8FB79F006A715A /* QQMenuTableViewCell.h */,
+				0D0D69281C8FB79F006A715A /* QQMenuTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1031,6 +1036,7 @@
 				0D52A17E1C8D23CB008E6E0F /* RXBasicArrowItem.m in Sources */,
 				0D52A15C1C8D2107008E6E0F /* QQContactsController.m in Sources */,
 				0D52A1431C8D1A6B008E6E0F /* UIScrollView+YYAdd.m in Sources */,
+				0D0D69291C8FB79F006A715A /* QQMenuTableViewCell.m in Sources */,
 				0D52A1591C8D202E008E6E0F /* QQMainTabbarController.m in Sources */,
 				0D52A19F1C8D27DB008E6E0F /* QQTrendstTableController.m in Sources */,
 				0D52A13D1C8D1A6B008E6E0F /* UIControl+YYAdd.m in Sources */,

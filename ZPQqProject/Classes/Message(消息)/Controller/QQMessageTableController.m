@@ -9,7 +9,7 @@
 #import "QQMessageTableController.h"
 #import "QQMessageCell.h"
 
-@interface QQMessageTableController () 
+@interface QQMessageTableController ()
 
 @end
 
