@@ -12,7 +12,7 @@
 typedef void (^myOption)();
 typedef void (^switchOption)(UISwitch *);
 
-@interface RXBasicItem : NSObject
+@interface QQBasicItem : NSObject
 @property (strong, nonatomic) UIImage *image;///图片
 @property (copy, nonatomic)  NSString *title;
 @property (copy, nonatomic)  NSString *subTitle;

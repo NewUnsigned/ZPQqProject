@@ -1,13 +1,13 @@
 //
-//  RTHXBasicSwitchItem.m
+//  RTHXBasicArrowItem.m
 //  RTHXiOSApp
 //
 //  Created by 融通汇信 on 15/6/17.
 //  Copyright (c) 2015年 融通汇信. All rights reserved.
 //
 
-#import "RXBasicSwitchItem.h"
+#import "QQBasicArrowItem.h"
 
-@implementation RXBasicSwitchItem
+@implementation QQBasicArrowItem
 
 @end

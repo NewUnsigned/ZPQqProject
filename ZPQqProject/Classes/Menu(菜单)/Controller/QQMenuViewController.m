@@ -7,12 +7,11 @@
 //
 
 #import "QQMenuViewController.h"
-#import "RXBasicItem.h"
-#import "RXBasicArrowItem.h"
-#import "RXBasicLabelItem.h"
-#import "RXBasicSwitchItem.h"
-#import "RXBasicTableViewCell.h"
-#import "GradientView.h"
+#import "QQBasicItem.h"
+#import "QQBasicArrowItem.h"
+#import "QQBasicLabelItem.h"
+#import "QQBasicSwitchItem.h"
+#import "QQBasicTableViewCell.h"
 #import "UIViewController+MMDrawerController.h"
 #import "QQMyFilesController.h"
 #import "QQNormalLevelView.h"
@@ -70,12 +69,12 @@ static CGFloat const bottom_height       = 44.0f;
     UIImage *albumImg   = [UIImage imageNamed:@"sidebar_album"     ];
     UIImage *filesImg   = [UIImage imageNamed:@"sidebar_file"      ];
     
-    RXBasicArrowItem *member   = [RXBasicArrowItem  itemWithImage:memberImg   title:@"开通会员"];
-    RXBasicArrowItem *wallet   = [RXBasicArrowItem  itemWithImage:walletImg   title:@"QQ钱包" ];
-    RXBasicArrowItem *playact  = [RXBasicArrowItem  itemWithImage:playactImg  title:@"个性装扮"];
-    RXBasicArrowItem *collect  = [RXBasicArrowItem  itemWithImage:collectImg  title:@"我的收藏"];
-    RXBasicArrowItem *album    = [RXBasicArrowItem  itemWithImage:albumImg    title:@"我的相册"];
-    RXBasicArrowItem *files    = [RXBasicArrowItem  itemWithImage:filesImg    title:@"我的文件"];
+    QQBasicArrowItem *member   = [QQBasicArrowItem  itemWithImage:memberImg   title:@"开通会员"];
+    QQBasicArrowItem *wallet   = [QQBasicArrowItem  itemWithImage:walletImg   title:@"QQ钱包" ];
+    QQBasicArrowItem *playact  = [QQBasicArrowItem  itemWithImage:playactImg  title:@"个性装扮"];
+    QQBasicArrowItem *collect  = [QQBasicArrowItem  itemWithImage:collectImg  title:@"我的收藏"];
+    QQBasicArrowItem *album    = [QQBasicArrowItem  itemWithImage:albumImg    title:@"我的相册"];
+    QQBasicArrowItem *files    = [QQBasicArrowItem  itemWithImage:filesImg    title:@"我的文件"];
     
     self.datasArr = [NSMutableArray arrayWithObjects:@[member,wallet,playact,collect,album,files],nil];
 }
@@ -94,7 +93,7 @@ static CGFloat const bottom_height       = 44.0f;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QQMenuTableViewCell *cell = [QQMenuTableViewCell cellWithTableView:tableView];
     NSArray *group = self.datasArr[indexPath.section];
-    RXBasicItem *item = group[indexPath.row];
+    QQBasicItem *item = group[indexPath.row];
     cell.item = item;
     return cell;
 }
@@ -102,7 +101,7 @@ static CGFloat const bottom_height       = 44.0f;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *group = self.datasArr[indexPath.section];
-    RXBasicItem *item = group[indexPath.row];
+    QQBasicItem *item = group[indexPath.row];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self closeDrawerWithTitle:item.title];

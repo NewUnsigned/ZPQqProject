@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class RXBasicItem;
+@class QQBasicItem;
 
 @interface QQMenuTableViewCell : UITableViewCell
-@property (strong, nonatomic) RXBasicItem *item;
+@property (strong, nonatomic) QQBasicItem *item;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @end

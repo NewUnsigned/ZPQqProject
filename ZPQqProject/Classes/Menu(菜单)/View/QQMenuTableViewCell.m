@@ -7,7 +7,7 @@
 //
 
 #import "QQMenuTableViewCell.h"
-#import "RXBasicItem.h"
+#import "QQBasicItem.h"
 
 @implementation QQMenuTableViewCell
 
@@ -33,7 +33,7 @@
     return cell;
 }
 
-- (void)setItem:(RXBasicItem *)item{
+- (void)setItem:(QQBasicItem *)item{
     _item = item;
     self.imageView.image = item.image;
     self.textLabel.text = item.title;

@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RXBasicItem.h"
+#import "QQBasicItem.h"
 
-@interface RXBasicSwitchItem : RXBasicItem
+@interface QQBasicSwitchItem : QQBasicItem
 @property (assign, nonatomic) BOOL open;
 @end

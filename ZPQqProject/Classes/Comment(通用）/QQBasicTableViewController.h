@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RXBasicTableViewController : UITableViewController
+@interface QQBasicTableViewController : UITableViewController
 @property (strong, nonatomic) UIColor *switchColor;
 @property (strong, nonatomic) NSMutableArray *datasArr;
 @end

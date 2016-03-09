@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 融通汇信. All rights reserved.
 //
 
-#import "RXBasicTableViewCell.h"
-#import "RXBasicLabelItem.h"
-#import "RXBasicArrowItem.h"
-#import "RXBasicSwitchItem.h"
+#import "QQBasicTableViewCell.h"
+#import "QQBasicLabelItem.h"
+#import "QQBasicArrowItem.h"
+#import "QQBasicSwitchItem.h"
 
 static const NSInteger DetailTextLabelFontSize = 14;
 
-@interface RXBasicTableViewCell ()
+@interface QQBasicTableViewCell ()
 
 @property (strong, nonatomic) UIImageView *arrowAccessoryView;
 @property (strong, nonatomic) UISwitch    *switchAccessoryView;
@@ -22,14 +22,14 @@ static const NSInteger DetailTextLabelFontSize = 14;
 
 @end
 
-@implementation RXBasicTableViewCell
+@implementation QQBasicTableViewCell
 
 + (instancetype)cellWithTableView:(UITableView *)tableView
 {
     static NSString *indentifier = @"Custom_Cell";
-    RXBasicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
+    QQBasicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifier];
     if (cell == nil) {
-        cell = [[RXBasicTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
+        cell = [[QQBasicTableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:indentifier];
     }
     return cell;
 }
@@ -42,7 +42,7 @@ static const NSInteger DetailTextLabelFontSize = 14;
     return self;
 }
 
-- (void)setItem:(RXBasicItem *)item
+- (void)setItem:(QQBasicItem *)item
 {
     _item = item;
     self.imageView.image = item.image;
@@ -59,15 +59,15 @@ static const NSInteger DetailTextLabelFontSize = 14;
 
 - (void)setupRightView
 {
-    if ([self.item isKindOfClass:[RXBasicArrowItem class]]) {
+    if ([self.item isKindOfClass:[QQBasicArrowItem class]]) {
         self.accessoryView = self.arrowAccessoryView;
-    }else if([self.item isKindOfClass:[RXBasicSwitchItem class]]){
-        RXBasicSwitchItem *swItem = (RXBasicSwitchItem *)self.item;
+    }else if([self.item isKindOfClass:[QQBasicSwitchItem class]]){
+        QQBasicSwitchItem *swItem = (QQBasicSwitchItem *)self.item;
         self.switchAccessoryView.on = NO;
         [self.switchAccessoryView addTarget:self action:@selector(switchState:) forControlEvents:UIControlEventValueChanged];
         self.switchAccessoryView.on = swItem.open;
         self.accessoryView = self.switchAccessoryView;
-    }else if ([self.item isKindOfClass:[RXBasicLabelItem class]]){
+    }else if ([self.item isKindOfClass:[QQBasicLabelItem class]]){
         self.accessoryView = self.labbelAccessoryView;
     }else{
         self.accessoryView = nil;

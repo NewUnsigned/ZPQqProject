@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RXBasicItem.h"
+#import "QQBasicItem.h"
 
-@interface RXBasicLabelItem : RXBasicItem
+@interface QQBasicLabelItem : QQBasicItem
 @property (nonatomic, copy)NSString *Labelinfo;
 @end

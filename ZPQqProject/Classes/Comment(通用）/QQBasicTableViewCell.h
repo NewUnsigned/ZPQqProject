@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RXBasicItem.h"
+#import "QQBasicItem.h"
 #import "UIView+WZLBadge.h"
 
-@interface RXBasicTableViewCell : UITableViewCell
+@interface QQBasicTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) RXBasicItem *item;
+@property (strong, nonatomic) QQBasicItem *item;
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 @property (assign, nonatomic) BOOL changeSelectBg;
 

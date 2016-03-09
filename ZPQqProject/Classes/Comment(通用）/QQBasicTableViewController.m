@@ -6,18 +6,18 @@
 //  Copyright (c) 2015年 融通汇信. All rights reserved.
 //
 
-#import "RXBasicItem.h"
-#import "RXBasicArrowItem.h"
-#import "RXBasicLabelItem.h"
-#import "RXBasicSwitchItem.h"
-#import "RXBasicTableViewCell.h"
-#import "RXBasicTableViewController.h"
+#import "QQBasicItem.h"
+#import "QQBasicArrowItem.h"
+#import "QQBasicLabelItem.h"
+#import "QQBasicSwitchItem.h"
+#import "QQBasicTableViewCell.h"
+#import "QQBasicTableViewController.h"
 
-@interface RXBasicTableViewController ()
+@interface QQBasicTableViewController ()
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @end
 
-@implementation RXBasicTableViewController
+@implementation QQBasicTableViewController
 
 - (instancetype)init
 {
@@ -46,9 +46,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RXBasicTableViewCell *cell = [RXBasicTableViewCell cellWithTableView:tableView];
+    QQBasicTableViewCell *cell = [QQBasicTableViewCell cellWithTableView:tableView];
     NSArray *group = self.datasArr[indexPath.section];
-    RXBasicItem *item = group[indexPath.row];
+    QQBasicItem *item = group[indexPath.row];
     cell.item = item;
     return cell;
 }
@@ -57,8 +57,8 @@
 {
     self.indexPath = indexPath;
     NSArray *group = self.datasArr[indexPath.section];
-    RXBasicItem *item = group[indexPath.row];
-    if (item.option != nil && ![item isKindOfClass:[RXBasicSwitchItem class]]) {
+    QQBasicItem *item = group[indexPath.row];
+    if (item.option != nil && ![item isKindOfClass:[QQBasicSwitchItem class]]) {
         item.option();
     }
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];

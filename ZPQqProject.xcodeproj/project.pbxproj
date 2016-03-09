@@ -60,13 +60,12 @@
 		0D52A1591C8D202E008E6E0F /* QQMainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1581C8D202E008E6E0F /* QQMainTabbarController.m */; };
 		0D52A15C1C8D2107008E6E0F /* QQContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A15B1C8D2107008E6E0F /* QQContactsController.m */; };
 		0D52A15E1C8D2114008E6E0F /* QQContactsController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D52A15D1C8D2114008E6E0F /* QQContactsController.storyboard */; };
-		0D52A17D1C8D23CB008E6E0F /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A16D1C8D23CB008E6E0F /* GradientView.m */; };
-		0D52A17E1C8D23CB008E6E0F /* RXBasicArrowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1701C8D23CB008E6E0F /* RXBasicArrowItem.m */; };
-		0D52A17F1C8D23CB008E6E0F /* RXBasicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1721C8D23CB008E6E0F /* RXBasicItem.m */; };
-		0D52A1801C8D23CB008E6E0F /* RXBasicLabelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1741C8D23CB008E6E0F /* RXBasicLabelItem.m */; };
-		0D52A1811C8D23CB008E6E0F /* RXBasicSwitchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1761C8D23CB008E6E0F /* RXBasicSwitchItem.m */; };
-		0D52A1821C8D23CB008E6E0F /* RXBasicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1781C8D23CB008E6E0F /* RXBasicTableViewCell.m */; };
-		0D52A1831C8D23CB008E6E0F /* RXBasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A17A1C8D23CB008E6E0F /* RXBasicTableViewController.m */; };
+		0D52A17E1C8D23CB008E6E0F /* QQBasicArrowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1701C8D23CB008E6E0F /* QQBasicArrowItem.m */; };
+		0D52A17F1C8D23CB008E6E0F /* QQBasicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1721C8D23CB008E6E0F /* QQBasicItem.m */; };
+		0D52A1801C8D23CB008E6E0F /* QQBasicLabelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1741C8D23CB008E6E0F /* QQBasicLabelItem.m */; };
+		0D52A1811C8D23CB008E6E0F /* QQBasicSwitchItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1761C8D23CB008E6E0F /* QQBasicSwitchItem.m */; };
+		0D52A1821C8D23CB008E6E0F /* QQBasicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A1781C8D23CB008E6E0F /* QQBasicTableViewCell.m */; };
+		0D52A1831C8D23CB008E6E0F /* QQBasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D52A17A1C8D23CB008E6E0F /* QQBasicTableViewController.m */; };
 		0D52A1871C8D2583008E6E0F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D52A1861C8D2583008E6E0F /* libsqlite3.0.tbd */; };
 		0D52A1891C8D258F008E6E0F /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D52A1881C8D258F008E6E0F /* libiconv.2.4.0.tbd */; };
 		0D52A18B1C8D2599008E6E0F /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D52A18A1C8D2599008E6E0F /* libstdc++.6.0.9.tbd */; };
@@ -207,20 +206,18 @@
 		0D52A15A1C8D2107008E6E0F /* QQContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQContactsController.h; sourceTree = "<group>"; };
 		0D52A15B1C8D2107008E6E0F /* QQContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQContactsController.m; sourceTree = "<group>"; };
 		0D52A15D1C8D2114008E6E0F /* QQContactsController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QQContactsController.storyboard; sourceTree = "<group>"; };
-		0D52A16C1C8D23CB008E6E0F /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
-		0D52A16D1C8D23CB008E6E0F /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
-		0D52A16F1C8D23CB008E6E0F /* RXBasicArrowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXBasicArrowItem.h; sourceTree = "<group>"; };
-		0D52A1701C8D23CB008E6E0F /* RXBasicArrowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXBasicArrowItem.m; sourceTree = "<group>"; };
-		0D52A1711C8D23CB008E6E0F /* RXBasicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXBasicItem.h; sourceTree = "<group>"; };
-		0D52A1721C8D23CB008E6E0F /* RXBasicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXBasicItem.m; sourceTree = "<group>"; };
-		0D52A1731C8D23CB008E6E0F /* RXBasicLabelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXBasicLabelItem.h; sourceTree = "<group>"; };
-		0D52A1741C8D23CB008E6E0F /* RXBasicLabelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXBasicLabelItem.m; sourceTree = "<group>"; };
-		0D52A1751C8D23CB008E6E0F /* RXBasicSwitchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXBasicSwitchItem.h; sourceTree = "<group>"; };
-		0D52A1761C8D23CB008E6E0F /* RXBasicSwitchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXBasicSwitchItem.m; sourceTree = "<group>"; };
-		0D52A1771C8D23CB008E6E0F /* RXBasicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXBasicTableViewCell.h; sourceTree = "<group>"; };
-		0D52A1781C8D23CB008E6E0F /* RXBasicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXBasicTableViewCell.m; sourceTree = "<group>"; };
-		0D52A1791C8D23CB008E6E0F /* RXBasicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXBasicTableViewController.h; sourceTree = "<group>"; };
-		0D52A17A1C8D23CB008E6E0F /* RXBasicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXBasicTableViewController.m; sourceTree = "<group>"; };
+		0D52A16F1C8D23CB008E6E0F /* QQBasicArrowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBasicArrowItem.h; sourceTree = "<group>"; };
+		0D52A1701C8D23CB008E6E0F /* QQBasicArrowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBasicArrowItem.m; sourceTree = "<group>"; };
+		0D52A1711C8D23CB008E6E0F /* QQBasicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBasicItem.h; sourceTree = "<group>"; };
+		0D52A1721C8D23CB008E6E0F /* QQBasicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBasicItem.m; sourceTree = "<group>"; };
+		0D52A1731C8D23CB008E6E0F /* QQBasicLabelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBasicLabelItem.h; sourceTree = "<group>"; };
+		0D52A1741C8D23CB008E6E0F /* QQBasicLabelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBasicLabelItem.m; sourceTree = "<group>"; };
+		0D52A1751C8D23CB008E6E0F /* QQBasicSwitchItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBasicSwitchItem.h; sourceTree = "<group>"; };
+		0D52A1761C8D23CB008E6E0F /* QQBasicSwitchItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBasicSwitchItem.m; sourceTree = "<group>"; };
+		0D52A1771C8D23CB008E6E0F /* QQBasicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBasicTableViewCell.h; sourceTree = "<group>"; };
+		0D52A1781C8D23CB008E6E0F /* QQBasicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBasicTableViewCell.m; sourceTree = "<group>"; };
+		0D52A1791C8D23CB008E6E0F /* QQBasicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QQBasicTableViewController.h; sourceTree = "<group>"; };
+		0D52A17A1C8D23CB008E6E0F /* QQBasicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QQBasicTableViewController.m; sourceTree = "<group>"; };
 		0D52A1851C8D23E2008E6E0F /* QQConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQConfig.h; sourceTree = "<group>"; };
 		0D52A1861C8D2583008E6E0F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		0D52A1881C8D258F008E6E0F /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
@@ -747,14 +744,12 @@
 		0D52A16B1C8D23CB008E6E0F /* Comment(通用） */ = {
 			isa = PBXGroup;
 			children = (
-				0D52A1851C8D23E2008E6E0F /* QQConfig.h */,
-				0D52A16C1C8D23CB008E6E0F /* GradientView.h */,
-				0D52A16D1C8D23CB008E6E0F /* GradientView.m */,
 				0D52A16E1C8D23CB008E6E0F /* Model */,
-				0D52A1771C8D23CB008E6E0F /* RXBasicTableViewCell.h */,
-				0D52A1781C8D23CB008E6E0F /* RXBasicTableViewCell.m */,
-				0D52A1791C8D23CB008E6E0F /* RXBasicTableViewController.h */,
-				0D52A17A1C8D23CB008E6E0F /* RXBasicTableViewController.m */,
+				0D52A1851C8D23E2008E6E0F /* QQConfig.h */,
+				0D52A1771C8D23CB008E6E0F /* QQBasicTableViewCell.h */,
+				0D52A1781C8D23CB008E6E0F /* QQBasicTableViewCell.m */,
+				0D52A1791C8D23CB008E6E0F /* QQBasicTableViewController.h */,
+				0D52A17A1C8D23CB008E6E0F /* QQBasicTableViewController.m */,
 			);
 			path = "Comment(通用）";
 			sourceTree = "<group>";
@@ -762,14 +757,14 @@
 		0D52A16E1C8D23CB008E6E0F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0D52A16F1C8D23CB008E6E0F /* RXBasicArrowItem.h */,
-				0D52A1701C8D23CB008E6E0F /* RXBasicArrowItem.m */,
-				0D52A1711C8D23CB008E6E0F /* RXBasicItem.h */,
-				0D52A1721C8D23CB008E6E0F /* RXBasicItem.m */,
-				0D52A1731C8D23CB008E6E0F /* RXBasicLabelItem.h */,
-				0D52A1741C8D23CB008E6E0F /* RXBasicLabelItem.m */,
-				0D52A1751C8D23CB008E6E0F /* RXBasicSwitchItem.h */,
-				0D52A1761C8D23CB008E6E0F /* RXBasicSwitchItem.m */,
+				0D52A16F1C8D23CB008E6E0F /* QQBasicArrowItem.h */,
+				0D52A1701C8D23CB008E6E0F /* QQBasicArrowItem.m */,
+				0D52A1711C8D23CB008E6E0F /* QQBasicItem.h */,
+				0D52A1721C8D23CB008E6E0F /* QQBasicItem.m */,
+				0D52A1731C8D23CB008E6E0F /* QQBasicLabelItem.h */,
+				0D52A1741C8D23CB008E6E0F /* QQBasicLabelItem.m */,
+				0D52A1751C8D23CB008E6E0F /* QQBasicSwitchItem.h */,
+				0D52A1761C8D23CB008E6E0F /* QQBasicSwitchItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -987,7 +982,7 @@
 			files = (
 				0D52A13C1C8D1A6B008E6E0F /* UIColor+YYAdd.m in Sources */,
 				0D52A12D1C8D1A6B008E6E0F /* NSData+YYAdd.m in Sources */,
-				0D52A17F1C8D23CB008E6E0F /* RXBasicItem.m in Sources */,
+				0D52A17F1C8D23CB008E6E0F /* QQBasicItem.m in Sources */,
 				0D52A12B1C8D1A6B008E6E0F /* NSArray+YYAdd.m in Sources */,
 				0D52A14B1C8D1A6B008E6E0F /* AppDelegate.m in Sources */,
 				0D0D69161C8EB00E006A715A /* QQRecentController.m in Sources */,
@@ -999,7 +994,7 @@
 				0D0D69261C8EBFDE006A715A /* QQMessageCell.m in Sources */,
 				0D52A1271C8D1A6B008E6E0F /* UIBarButtonItem+Extension.m in Sources */,
 				0D52A12A1C8D1A6B008E6E0F /* UIWindow+Extension.m in Sources */,
-				0D52A1811C8D23CB008E6E0F /* RXBasicSwitchItem.m in Sources */,
+				0D52A1811C8D23CB008E6E0F /* QQBasicSwitchItem.m in Sources */,
 				0D0D69231C8EB16E006A715A /* QQMessageTableController.m in Sources */,
 				0D52A1451C8D1A6B008E6E0F /* UITextField+YYAdd.m in Sources */,
 				0D52A1461C8D1A6B008E6E0F /* UIView+YYAdd.m in Sources */,
@@ -1009,15 +1004,14 @@
 				0D52A1A21C8D2AE8008E6E0F /* QQMyFilesController.m in Sources */,
 				0D52A12F1C8D1A6B008E6E0F /* NSDictionary+YYAdd.m in Sources */,
 				0D52A1281C8D1A6B008E6E0F /* CAAnimation+WAnimation.m in Sources */,
-				0D52A1821C8D23CB008E6E0F /* RXBasicTableViewCell.m in Sources */,
+				0D52A1821C8D23CB008E6E0F /* QQBasicTableViewCell.m in Sources */,
 				0D52A13B1C8D1A6B008E6E0F /* UIBezierPath+YYAdd.m in Sources */,
-				0D52A1801C8D23CB008E6E0F /* RXBasicLabelItem.m in Sources */,
+				0D52A1801C8D23CB008E6E0F /* QQBasicLabelItem.m in Sources */,
 				0D52A1321C8D1A6B008E6E0F /* NSNumber+YYAdd.m in Sources */,
 				0D52A1301C8D1A6B008E6E0F /* NSKeyedUnarchiver+YYAdd.m in Sources */,
-				0D52A1831C8D23CB008E6E0F /* RXBasicTableViewController.m in Sources */,
+				0D52A1831C8D23CB008E6E0F /* QQBasicTableViewController.m in Sources */,
 				0D52A1401C8D1A6B008E6E0F /* UIGestureRecognizer+YYAdd.m in Sources */,
 				0D52A1421C8D1A6B008E6E0F /* UIScreen+YYAdd.m in Sources */,
-				0D52A17D1C8D23CB008E6E0F /* GradientView.m in Sources */,
 				0D52A13A1C8D1A6B008E6E0F /* UIBarButtonItem+YYAdd.m in Sources */,
 				0D52A1441C8D1A6B008E6E0F /* UITableView+YYAdd.m in Sources */,
 				0D52A1331C8D1A6B008E6E0F /* NSObject+YYAdd.m in Sources */,
@@ -1033,7 +1027,7 @@
 				0D52A14D1C8D1A6B008E6E0F /* ZPProgressHUD.m in Sources */,
 				0D52A13E1C8D1A6B008E6E0F /* UIDevice+YYAdd.m in Sources */,
 				0D52A1291C8D1A6B008E6E0F /* UIView+WZLBadge.m in Sources */,
-				0D52A17E1C8D23CB008E6E0F /* RXBasicArrowItem.m in Sources */,
+				0D52A17E1C8D23CB008E6E0F /* QQBasicArrowItem.m in Sources */,
 				0D52A15C1C8D2107008E6E0F /* QQContactsController.m in Sources */,
 				0D52A1431C8D1A6B008E6E0F /* UIScrollView+YYAdd.m in Sources */,
 				0D0D69291C8FB79F006A715A /* QQMenuTableViewCell.m in Sources */,

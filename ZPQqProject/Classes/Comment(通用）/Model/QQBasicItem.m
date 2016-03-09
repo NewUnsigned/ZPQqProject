@@ -6,13 +6,13 @@
 //  Copyright (c) 2015年 融通汇信. All rights reserved.
 //
 
-#import "RXBasicItem.h"
+#import "QQBasicItem.h"
 
-@implementation RXBasicItem
+@implementation QQBasicItem
 
 + (instancetype)itemWithImage:(UIImage *)image title:(NSString *)title
 {
-    RXBasicItem *item = [[self alloc]init];
+    QQBasicItem *item = [[self alloc]init];
     item.image = image;
     item.title = title;
     return item;
